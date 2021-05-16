@@ -1,0 +1,12 @@
+{
+	"main": "index.js",
+	"version": "0.0.1",
+	"name": "paste",
+	"description": "upload to a paste host with a command, and send the link automatically",
+	"tags": [
+		"utility"
+	],
+	"authors": [
+		"451135632882925570"
+	]
+}
