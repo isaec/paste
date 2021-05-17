@@ -1,8 +1,8 @@
 {
 	"main": "index.js",
 	"version": "0.0.1",
-	"name": "paste",
-	"description": "upload to a paste host with a command, and send the link automatically",
+	"name": "upload",
+	"description": "upload to a text or file host with a text area button, and send the link",
 	"tags": [
 		"utility"
 	],

@@ -1,2 +1,2 @@
-# paste
-upload to a paste host, and send the link automatically
+# upload
+upload to a text or file host with a text area button, and send the link
