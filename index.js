@@ -2,25 +2,24 @@ import { channelTextAreaButtons } from "@goosemod/patcher"
 
 let style
 
+const { React } = goosemodScope.webpackModules.common,
+    { findByDisplayName, findByProps } = goosemodScope.webpackModules
+const e = React.createElement
+
+const Text = findByDisplayName("Text"),
+    Markdown = findByDisplayName("Markdown"),
+    ButtonColors = findByProps("button", "colorRed");
+
 const uploadWindow = srcProps => {
-    console.log(srcProps)
-
-    const { React } = goosemodScope.webpackModules.common,
-        { findByDisplayName, findByProps } = goosemodScope.webpackModules
-
-    const Text = findByDisplayName("Text"),
-        Markdown = findByDisplayName("Markdown"),
-        ButtonColors = findByProps("button", "colorRed");
-
-    (0, findByProps("openModal").openModal)((e) => {
-        //if (e.transitionState === 3) res(false); // If clicked off
+    (0, findByProps("openModal").openModal)((model) => {
+        //if (modal.transitionState === 3) res(false); // If clicked off
 
         let description = "this is to prevent crash"
 
-        return React.createElement(findByDisplayName("ConfirmModal"),
+        return e(findByDisplayName("ConfirmModal"),
             {
                 header: "upload",
-                confirmText: "upload and send link",
+                confirmText: "Upload and send link",
                 cancelText: findByProps("Messages").Messages.CANCEL,
                 confirmButtonColor: ButtonColors[`colorRed`],
                 onClose: () => { // General close (?)
@@ -28,15 +27,15 @@ const uploadWindow = srcProps => {
                 },
                 onCancel: () => { // Cancel text
                     console.log("canceled")
-                    e.onClose();
+                    model.onClose();
                 },
                 onConfirm: () => { // Confirm button
                     console.log("do it")
-                    e.onClose();
+                    model.onClose();
                 },
-                transitionState: e.transitionState,
+                transitionState: model.transitionState,
             },
-            ...description.split('\n').map((x) => React.createElement(Markdown,
+            ...description.split('\n').map((x) => e(Markdown,
                 {
                     size: Text.Sizes.SIZE_16
                 },
