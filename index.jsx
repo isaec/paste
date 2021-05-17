@@ -13,10 +13,10 @@ const Text = findByDisplayName("Text"),
 
 const makeUploadWindow = srcProps => {
     (0, findByProps("openModal").openModal)((model) => {
-
         return <ConfirmModal
             header="upload"
             confirmText="Upload and Send Link"
+            confirmButtonColor={ButtonColors["colorRed"]}
             cancelText={findByProps("Messages").Messages.CANCEL}
             onClose={() => { // General close (?)
                 console.log("closed")
@@ -31,7 +31,13 @@ const makeUploadWindow = srcProps => {
             }}
             transitionState={model.transitionState}
         >
-            <Markdown>test</Markdown>
+            <div
+                className="uploadGrid"
+            >
+                <Markdown>a</Markdown>
+                <Markdown>a</Markdown>
+                <Markdown>a</Markdown>
+            </div>
         </ConfirmModal>
     });
 }
@@ -58,8 +64,8 @@ export default {
             //
         },
         onRemove: () => {
-            style.remove()
-            textPatch.remove()
+            if (style !== undefined) style.remove()
+            if (textPatch !== undefined) textPatch.remove()
         },
         //this part makes persistent settings work
         // getSettings: () => [settings],
