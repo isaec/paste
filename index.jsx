@@ -1,6 +1,6 @@
 import { channelTextAreaButtons } from "@goosemod/patcher"
 
-let style
+let style, textPatch
 
 const { React } = goosemodScope.webpackModules.common,
     { findByDisplayName, findByProps } = goosemodScope.webpackModules
@@ -47,16 +47,19 @@ export default {
                     ".buttons-3JBrkn > button { display: none; }"
                 )
             )
-        },
-        onLoadingFinished: () => {
-            channelTextAreaButtons.patch(
+
+            textPatch = channelTextAreaButtons.patch(
                 "upload",
                 "https://avatars.githubusercontent.com/u/19228318?s=48&v=4",
                 makeUploadWindow
             )
         },
+        onLoadingFinished: () => {
+            //
+        },
         onRemove: () => {
             style.remove()
+            textPatch.remove()
         },
         //this part makes persistent settings work
         // getSettings: () => [settings],
