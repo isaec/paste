@@ -1,6 +1,6 @@
 import { channelTextAreaButtons } from "@goosemod/patcher"
 
-let style, textPatch
+let textPatch
 
 const { React } = goosemodScope.webpackModules.common,
     { findByDisplayName, findByProps } = goosemodScope.webpackModules
@@ -12,8 +12,22 @@ const Text = findByDisplayName("Text"),
     ConfirmModal = findByDisplayName("ConfirmModal")
 
 import { readFileSync } from "fs"
-// import path from "path"
-const stylecss = readFileSync(`${__dirname}/style.css`, "utf8")
+
+const addStyle = str => {
+    let style = document.createElement("style")
+    document.head.appendChild(style)
+    style.appendChild(
+        document.createTextNode(str))
+    return () => style.remove()
+}
+const addCss = name => {
+    let css = readFileSync(`${__dirname}/style.css`, "utf8")
+    return addStyle(css)
+}
+
+const removecss = addCss("style.css")
+//https://github.com/GooseMod/MS2Porter/blob/main/modules/deNitro/index.js
+const removeN = addStyle(".buttons-3JBrkn > button { display: none; }")
 
 const makeUploadWindow = srcProps => {
     (0, findByProps("openModal").openModal)((model) => {
@@ -49,15 +63,6 @@ const makeUploadWindow = srcProps => {
 export default {
     goosemodHandlers: {
         onImport: () => {
-            style = document.createElement("style")
-            document.head.appendChild(style)
-
-            style.appendChild(
-                document.createTextNode(stylecss))
-
-            style.appendChild( //https://github.com/GooseMod/MS2Porter/blob/main/modules/deNitro/index.js
-                document.createTextNode(".buttons-3JBrkn > button { display: none; }"))
-
             textPatch = channelTextAreaButtons.patch(
                 "upload",
                 "https://avatars.githubusercontent.com/u/19228318?s=48&v=4",
@@ -68,7 +73,8 @@ export default {
             //
         },
         onRemove: () => {
-            if (style !== undefined) style.remove()
+            removeN()
+            removecss()
             if (textPatch !== undefined) textPatch.remove()
         },
         //this part makes persistent settings work
