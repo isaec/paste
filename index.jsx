@@ -11,6 +11,10 @@ const Text = findByDisplayName("Text"),
     ButtonColors = findByProps("button", "colorRed"),
     ConfirmModal = findByDisplayName("ConfirmModal")
 
+import { readFileSync } from "fs"
+// import path from "path"
+const stylecss = readFileSync(`${__dirname}/style.css`, "utf8")
+
 const makeUploadWindow = srcProps => {
     (0, findByProps("openModal").openModal)((model) => {
         return <ConfirmModal
@@ -48,11 +52,11 @@ export default {
             style = document.createElement("style")
             document.head.appendChild(style)
 
+            style.appendChild(
+                document.createTextNode(stylecss))
+
             style.appendChild( //https://github.com/GooseMod/MS2Porter/blob/main/modules/deNitro/index.js
-                document.createTextNode(
-                    ".buttons-3JBrkn > button { display: none; }"
-                )
-            )
+                document.createTextNode(".buttons-3JBrkn > button { display: none; }"))
 
             textPatch = channelTextAreaButtons.patch(
                 "upload",
