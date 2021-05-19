@@ -31,6 +31,8 @@ const removeN = addStyle(".buttons-3JBrkn > button { display: none; }")
 const makeUploadWindow = srcProps => {
     (0, findByProps("openModal").openModal)((model) => {
         return <ConfirmModal
+            //specific to try to prevent collision
+            className="uploadModalBigGoose"
             header="upload"
             confirmText="Upload and Send Link"
             confirmButtonColor={ButtonColors["colorRed"]}

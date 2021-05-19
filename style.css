@@ -1,3 +1,8 @@
 div.uploadGrid {
     display: grid;
 }
+
+div.uploadModalBigGoose {
+    min-width: 80vw;
+    min-height: 60vh;
+}
