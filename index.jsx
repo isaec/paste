@@ -1,16 +1,13 @@
 import { channelTextAreaButtons } from "@goosemod/patcher"
+import FileUpload from "./FileUpload"
 
 let textPatch
 
 const { React } = goosemodScope.webpackModules.common,
     { findByDisplayName, findByProps } = goosemodScope.webpackModules
-const { useState, useRef } = React
 
-const Text = findByDisplayName("Text"),
-    Markdown = findByDisplayName("Markdown"),
-    ButtonColors = findByProps("button", "colorRed"),
-    ConfirmModal = findByDisplayName("ConfirmModal"),
-    Button = findByDisplayName("Button")
+const ButtonColors = findByProps("button", "colorRed"),
+    ConfirmModal = findByDisplayName("ConfirmModal")
 
 import { readFileSync } from "fs"
 
@@ -30,31 +27,6 @@ const removecss = addCss("style.css")
 //https://github.com/GooseMod/MS2Porter/blob/main/modules/deNitro/index.js
 const removeN = addStyle(".buttons-3JBrkn > button { display: none; }")
 
-const FileUpload = ({
-    label,
-    updateFilesCb,
-    ...otherProps
-}) => {
-    const fileInputField = useRef(null)
-    const [files, setFiles] = useState({})
-
-    return <section>
-        <label>{label}</label>
-        <Markdown>Drag and drop or</Markdown>
-        <button type="button">
-            <i className="fas fa-file-upload" />
-            <span>Upload files</span>
-        </button>
-        <input
-            type="file"
-            ref={fileInputField}
-            title=""
-            value=""
-            multiple={true}
-            {...otherProps}
-        />
-    </section>
-}
 
 const makeUploadWindow = srcProps => {
     (0, findByProps("openModal").openModal)((model) => {
