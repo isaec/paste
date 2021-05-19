@@ -17,13 +17,16 @@ const FileUpload = ({
 
     return <section>
         <input
-            type="file" name="file"
+            className="fileUploadInput"
+            type="file" name="fileUploadInput"
+            id="fileUploadInput"
             ref={fileInputField}
             multiple="true"
             {...otherProps}
         />
         <label
-            for="file"
+            className="fileUploadLabel"
+            for="fileUploadInput"
         >drag and drop, or click to upload files</label>
     </section>
 }
