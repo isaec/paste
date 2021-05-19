@@ -9,7 +9,6 @@ const Text = findByDisplayName("Text"),
     Button = findByDisplayName("Button")
 
 const FileUpload = ({
-    label,
     updateFilesCb,
     ...otherProps
 }) => {
@@ -17,20 +16,15 @@ const FileUpload = ({
     const [files, setFiles] = useState({})
 
     return <section>
-        <label>{label}</label>
-        <Markdown>Drag and drop or</Markdown>
-        <button type="button">
-            <i className="fas fa-file-upload" />
-            <span>Upload files</span>
-        </button>
         <input
-            type="file"
+            type="file" name="file"
             ref={fileInputField}
-            title=""
-            value=""
-            multiple={true}
+            multiple="true"
             {...otherProps}
         />
+        <label
+            for="file"
+        >drag and drop, or click to upload files</label>
     </section>
 }
 

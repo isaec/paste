@@ -50,7 +50,8 @@ const makeUploadWindow = srcProps => {
             }}
             transitionState={model.transitionState}
         >
-            <FileUpload />
+            <FileUpload
+            />
         </ConfirmModal>
     });
 }
