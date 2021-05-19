@@ -1,7 +1,7 @@
 import { channelTextAreaButtons } from "@goosemod/patcher"
 import FileUpload from "./FileUpload"
 
-let textPatch
+let textUnpatch, removecss, removeN
 
 const { React } = goosemodScope.webpackModules.common,
     { findByDisplayName, findByProps } = goosemodScope.webpackModules
@@ -22,11 +22,6 @@ const addCss = name => {
     let css = readFileSync(`${__dirname}/style.css`, "utf8")
     return addStyle(css)
 }
-
-const removecss = addCss("style.css")
-//https://github.com/GooseMod/MS2Porter/blob/main/modules/deNitro/index.js
-const removeN = addStyle(".buttons-3JBrkn > button { display: none; }")
-
 
 const makeUploadWindow = srcProps => {
     (0, findByProps("openModal").openModal)((model) => {
@@ -59,11 +54,14 @@ const makeUploadWindow = srcProps => {
 export default {
     goosemodHandlers: {
         onImport: () => {
-            textPatch = channelTextAreaButtons.patch(
+            textUnpatch = channelTextAreaButtons.patch(
                 "upload",
                 "https://avatars.githubusercontent.com/u/19228318?s=48&v=4",
                 makeUploadWindow
             )
+            removecss = addCss("style.css")
+            //https://github.com/GooseMod/MS2Porter/blob/main/modules/deNitro/index.js
+            removeN = addStyle(".buttons-3JBrkn > button { display: none; }")
         },
         onLoadingFinished: () => {
             //
@@ -71,7 +69,7 @@ export default {
         onRemove: () => {
             removeN()
             removecss()
-            if (textPatch !== undefined) textPatch.remove()
+            textUnpatch()
         },
         //this part makes persistent settings work
         // getSettings: () => [settings],

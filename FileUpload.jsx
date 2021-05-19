@@ -2,11 +2,11 @@ const { React } = goosemodScope.webpackModules.common,
     { findByDisplayName, findByProps } = goosemodScope.webpackModules
 const { useState, useRef } = React
 
-const Text = findByDisplayName("Text"),
-    Markdown = findByDisplayName("Markdown"),
-    ButtonColors = findByProps("button", "colorRed"),
-    ConfirmModal = findByDisplayName("ConfirmModal"),
-    Button = findByDisplayName("Button")
+// const Text = findByDisplayName("Text"),
+//     Markdown = findByDisplayName("Markdown"),
+//     ButtonColors = findByProps("button", "colorRed"),
+//     ConfirmModal = findByDisplayName("ConfirmModal"),
+//     Button = findByDisplayName("Button")
 
 const FileUpload = ({
     updateFilesCb,
