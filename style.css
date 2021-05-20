@@ -7,7 +7,7 @@ div.uploadModalBigGoose {
     min-height: 60vh;
 }
 
-div.uploadModalBigGoose > div:nth-child(2) {
+div.uploadModalBigGoose>div:nth-child(2) {
     display: flex;
 }
 
@@ -37,8 +37,7 @@ label.fileUploadLabel {
     background-color: hsl(218, 8%, 26%);
     border: 3px solid hsl(218, 8%, 26%);
     text-align: center;
-    transition: background-color .25s cubic-bezier(.44,.1,.24,1.04),
-    border-color .3s cubic-bezier(.41,.05,.74,.98);
+    transition: background-color .25s cubic-bezier(.44, .1, .24, 1.04), border-color .3s cubic-bezier(.41, .05, .74, .98);
 }
 
 label.fileUploadLabel:hover {
@@ -46,5 +45,5 @@ label.fileUploadLabel:hover {
 }
 
 input[type="file"].fileUploadInput:focus+label.fileUploadLabel {
-    border: 3px solid var(--focus-primary);
+    border-color: var(--focus-primary);
 }
