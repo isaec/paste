@@ -15,6 +15,12 @@ const FileUpload = ({
     const fileInputField = useRef(null)
     const [files, setFiles] = useState({})
 
+    const prevent = e => {
+        console.warn("drag")
+        e.preventDefault()
+        e.stopPropagation()
+    }
+
     return <div
         className="FileUpload"
     >
@@ -29,6 +35,14 @@ const FileUpload = ({
         <label
             className="fileUploadLabel"
             for="fileUploadInput"
+
+            onDrag={prevent}
+            onDragStart={prevent}
+            onDragEnd={prevent}
+            onDragOver={prevent}
+            onDragEnter={prevent}
+            onDragLeave={prevent}
+            onDrop={prevent}
         >drag and drop, or click to upload files</label>
     </div>
 }
