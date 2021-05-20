@@ -7,11 +7,37 @@ div.uploadModalBigGoose {
     min-height: 60vh;
 }
 
+div.uploadModalBigGoose > div:nth-child(2) {
+    display: flex;
+}
+
+div.FileUpload {
+    display: grid;
+    flex-grow: 1;
+}
+
 input[type="file"].fileUploadInput {
-    
+    /*hide it without removing its tab ability*/
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
 }
 
 label.fileUploadLabel {
     pointer-events: all;
     cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-normal);
+}
+
+label.fileUploadLabel:hover {
+    color: var(--text-hover);
+}
+
+input[type="file"].fileUploadInput:focus+label.fileUploadLabel {
+    outline: 3px solid var(--focus-primary);
 }

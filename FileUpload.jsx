@@ -15,7 +15,9 @@ const FileUpload = ({
     const fileInputField = useRef(null)
     const [files, setFiles] = useState({})
 
-    return <section>
+    return <div
+        className="FileUpload"
+    >
         <input
             className="fileUploadInput"
             type="file" name="fileUploadInput"
@@ -28,7 +30,7 @@ const FileUpload = ({
             className="fileUploadLabel"
             for="fileUploadInput"
         >drag and drop, or click to upload files</label>
-    </section>
+    </div>
 }
 
 export default FileUpload
