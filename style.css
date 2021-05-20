@@ -29,15 +29,22 @@ input[type="file"].fileUploadInput {
 label.fileUploadLabel {
     pointer-events: all;
     cursor: pointer;
-    font-size: 14px;
+    font-family: var(--font-primary);
+    font-size: 200%;
+    padding: 12px;
     font-weight: 500;
     color: var(--text-normal);
+    background-color: hsl(218, 8%, 26%);
+    border: 3px solid hsl(218, 8%, 26%);
+    text-align: center;
+    transition: background-color .25s cubic-bezier(.44,.1,.24,1.04),
+    border-color .3s cubic-bezier(.41,.05,.74,.98);
 }
 
 label.fileUploadLabel:hover {
-    color: var(--text-hover);
+    background-color: hsl(218, 8%, 28%);
 }
 
 input[type="file"].fileUploadInput:focus+label.fileUploadLabel {
-    outline: 3px solid var(--focus-primary);
+    border: 3px solid var(--focus-primary);
 }

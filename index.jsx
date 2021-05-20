@@ -30,7 +30,7 @@ const makeUploadWindow = srcProps => {
             className="uploadModalBigGoose"
             header="upload"
             confirmText="Upload and Send Link"
-            confirmButtonColor={ButtonColors["colorRed"]}
+            confirmButtonColor={ButtonColors["colorPurple"]}
             cancelText={findByProps("Messages").Messages.CANCEL}
             onClose={() => { // General close (?)
                 console.log("closed")
