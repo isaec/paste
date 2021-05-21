@@ -10,6 +10,21 @@ const { useState, useRef } = React
 
 const FileUpload = props => {
     const [files, setFiles] = useState({})
+    const [dragging, setDragging] = useState(false)
+
+    const prev = e => {
+        e.stopPropagation()
+        e.preventDefault()
+    }
+
+    const drOn = e => {
+        prev(e)
+        setDragging(true)
+    }
+    const drOff = e => {
+        prev(e)
+        setDragging(false)
+    }
 
     return <div className="FileUpload" >
         <input
@@ -22,7 +37,18 @@ const FileUpload = props => {
             className="fileUploadLabel"
             for="fileUploadInput"
         >click to upload files</label>
-        <div className="fileDragZone"></div>
+        <div className={dragging ? "fileDragZone dragging" : "fileDragZone"}
+            onDragEnter={drOn}
+            onDragOver={drOn}
+            onDragLeave={drOff}
+            onDrop={e => {
+                drOff(e)
+                let dt = e.dataTransfer
+                let file = dt.files
+                alert(file)
+            }}
+        >
+        </div>
     </div>
 }
 
