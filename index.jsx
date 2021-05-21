@@ -1,5 +1,6 @@
 import { channelTextAreaButtons } from "@goosemod/patcher"
 import FileUpload from "./FileUpload"
+import drag from "./drag"
 
 let textUnpatch, removecss, removeN
 
@@ -62,9 +63,12 @@ export default {
             removecss = addCss("style.css")
             //https://github.com/GooseMod/MS2Porter/blob/main/modules/deNitro/index.js
             removeN = addStyle(".buttons-3JBrkn > button { display: none; }")
+            drag.getEl()
         },
         onLoadingFinished: () => {
             //
+            drag.set(false)
+            drag.set(true)
         },
         onRemove: () => {
             removeN()
