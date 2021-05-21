@@ -45,6 +45,10 @@ label.fileUploadLabel:hover {
     background-color: hsl(218, 8%, 28%);
 }
 
+label.fileUploadLabel[dragging="1"] {
+    border-color: hsl(227, 58%, 78%);
+}
+
 input[type="file"].fileUploadInput:focus+label.fileUploadLabel {
     border-color: var(--focus-primary);
 }

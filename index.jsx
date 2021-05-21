@@ -58,7 +58,10 @@ export default {
             textUnpatch = channelTextAreaButtons.patch(
                 "upload",
                 "https://avatars.githubusercontent.com/u/19228318?s=48&v=4",
-                makeUploadWindow
+                () => { 
+                    drag.set(false)
+                    makeUploadWindow()
+                }
             )
             removecss = addCss("style.css")
             //https://github.com/GooseMod/MS2Porter/blob/main/modules/deNitro/index.js
