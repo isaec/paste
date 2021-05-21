@@ -13,7 +13,9 @@ div.uploadModalBigGoose>div:nth-child(2) {
 
 div.FileUpload {
     display: grid;
+    grid-template-rows: min-content 1fr;
     flex-grow: 1;
+    row-gap: 12px;
 }
 
 input[type="file"].fileUploadInput {
@@ -30,9 +32,8 @@ label.fileUploadLabel {
     pointer-events: all;
     cursor: pointer;
     font-family: var(--font-primary);
-    font-size: 200%;
+    font-size: 100%;
     padding: 12px;
-    padding-top: 36px;
     font-weight: 500;
     color: var(--text-normal);
     background-color: hsl(218, 8%, 26%);
@@ -45,8 +46,12 @@ label.fileUploadLabel:hover {
     background-color: hsl(218, 8%, 28%);
 }
 
-label.fileUploadLabel[dragging="1"] {
-    border-color: hsl(227, 58%, 78%);
+div.fileDragZone {
+    background-color: hsl(218, 8%, 26%);
+}
+
+div.fileDragZone.dragging {
+    background-color: hsl(218, 8%, 28%);
 }
 
 input[type="file"].fileUploadInput:focus+label.fileUploadLabel {
