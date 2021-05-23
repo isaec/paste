@@ -31,6 +31,7 @@ const FileUpload = props => {
         name={file.name}
         path={file.path}
         size={file.size}
+        type={file.type}
     />),
         [files]
     )
