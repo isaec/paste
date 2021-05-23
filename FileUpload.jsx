@@ -1,6 +1,7 @@
 const { React } = goosemodScope.webpackModules.common,
     { findByDisplayName, findByProps } = goosemodScope.webpackModules
 const { useState, useRef } = React
+import DropZone from "./dropZone"
 
 // const Text = findByDisplayName("Text"),
 //     Markdown = findByDisplayName("Markdown"),
@@ -9,22 +10,7 @@ const { useState, useRef } = React
 //     Button = findByDisplayName("Button")
 
 const FileUpload = props => {
-    const [files, setFiles] = useState({})
-    const [dragging, setDragging] = useState(false)
-
-    const prev = e => {
-        e.stopPropagation()
-        e.preventDefault()
-    }
-
-    const drOn = e => {
-        prev(e)
-        setDragging(true)
-    }
-    const drOff = e => {
-        prev(e)
-        setDragging(false)
-    }
+    // const [files, setFiles] = useState({})
 
     return <div className="FileUpload" >
         <input
@@ -37,18 +23,7 @@ const FileUpload = props => {
             className="fileUploadLabel"
             for="fileUploadInput"
         >click to upload files</label>
-        <div className={dragging ? "fileDragZone dragging" : "fileDragZone"}
-            onDragEnter={drOn}
-            onDragOver={drOn}
-            onDragLeave={drOff}
-            onDrop={e => {
-                drOff(e)
-                let dt = e.dataTransfer
-                let file = dt.files
-                alert(file)
-            }}
-        >
-        </div>
+        <DropZone />
     </div>
 }
 
