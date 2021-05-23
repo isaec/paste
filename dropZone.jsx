@@ -1,16 +1,16 @@
 const { React } = goosemodScope.webpackModules.common
 const { useState, useRef, useEffect } = React
+import { useToggle } from "./hooks"
 
 const DropZone = props => {
-    const [dragging, setDragging] = useState(0)
     const divRef = useRef()
+    const [fileDrop, fileAnim, animEnd] = useToggle()
 
     const evOn = ["dragenter", "dragover"],
         evOff = ["dragleave", "drop"]
 
-    //functions need to be defined in consts, because we need stable ref to destory them
-    const drOn = () => setDragging(1)
-    const drOff = () => setDragging(0)
+    //functions need to be defined in consts, because we need stable ref to destroy them
+    const [dragging, drOn, drOff] = useToggle()
     const drop = e => {
         console.log("drop!")
         let files = [...e.dataTransfer.files]
@@ -54,7 +54,10 @@ const DropZone = props => {
     )
 
     return <div
-        ref={divRef} dragging={dragging}
+        ref={divRef}
+        dragging={dragging}
+        fileDrop={fileDrop}
+        onAnimationEnd={animEnd}
         className={"fileDragZone"}
     >
     </div>
