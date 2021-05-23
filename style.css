@@ -88,3 +88,10 @@ div.fileDragZone[fileDrop="1"] {
 input[type="file"].fileUploadInput:focus+label.fileUploadLabel {
     border-color: var(--focus-primary);
 }
+
+div.File {
+    background-color: red;
+    margin: 12px;
+    padding: 12px;
+    border-radius: 3px;
+}

@@ -2,6 +2,7 @@ const { React } = goosemodScope.webpackModules.common,
     { findByDisplayName, findByProps } = goosemodScope.webpackModules
 const { useState, useRef } = React
 import DropZone from "./dropZone"
+import File from "./file"
 
 // const Text = findByDisplayName("Text"),
 //     Markdown = findByDisplayName("Markdown"),
@@ -35,16 +36,7 @@ const FileUpload = props => {
         <DropZone
             upload={uploadFile}
         >
-            <div>test</div>
-            <div>test</div>
-            <div>test</div>
-            <div>test</div>
-            <div>test</div>
-            <div>test</div>
-            <div>test</div>
-            <div>test</div>
-            <div>test</div>
-            <div>test</div>
+            <File />
         </DropZone>
     </div>
 }
