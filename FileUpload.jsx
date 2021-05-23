@@ -23,7 +23,7 @@ const FileUpload = props => {
             multiple="true"
             onChange={e => {
                 let files = [...e.target.files]
-                if(files && files.length > 0) files.forEach(
+                if (files && files.length > 0) files.forEach(
                     file => uploadFile(file)
                 )
             }}
@@ -34,7 +34,18 @@ const FileUpload = props => {
         >click to upload files</label>
         <DropZone
             upload={uploadFile}
-        />
+        >
+            <div>test</div>
+            <div>test</div>
+            <div>test</div>
+            <div>test</div>
+            <div>test</div>
+            <div>test</div>
+            <div>test</div>
+            <div>test</div>
+            <div>test</div>
+            <div>test</div>
+        </DropZone>
     </div>
 }
 
