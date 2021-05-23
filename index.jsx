@@ -30,8 +30,8 @@ const makeUploadWindow = srcProps => {
             //specific to try to prevent collision
             className="uploadModalBigGoose"
             header="upload"
-            confirmText="Upload and Send Link"
-            confirmButtonColor={ButtonColors["colorPurple"]}
+            confirmText="Send Links"
+            confirmButtonColor={ButtonColors["colorBrand"]}
             cancelText={findByProps("Messages").Messages.CANCEL}
             onClose={() => { // General close (?)
                 console.log("closed")
@@ -58,7 +58,7 @@ export default {
             textUnpatch = channelTextAreaButtons.patch(
                 "upload",
                 "https://avatars.githubusercontent.com/u/19228318?s=48&v=4",
-                () => { 
+                () => {
                     drag.set(false)
                     makeUploadWindow()
                 }

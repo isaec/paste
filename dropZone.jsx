@@ -15,10 +15,18 @@ const DropZone = props => {
         console.log("drop!")
         let files = [...e.dataTransfer.files]
         console.log(files)
-        if (files && files.length > 0) {
-            console.log("file!")
-            fileAnim()
+        if (!files || files.length < 1) {
+            goosemodScope.showToast(
+                "no files were included in that drop - ensure discord is focused",
+                {
+                    timeout: 6000,
+                    type: "error"
+                }
+            )
+            return
         }
+        console.log("file!")
+        fileAnim()
     }
 
     //prevent default events, so drag and drop works as intended
