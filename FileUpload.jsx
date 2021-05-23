@@ -11,10 +11,27 @@ import File from "./file"
 //     Button = findByDisplayName("Button")
 
 const FileUpload = props => {
-    const [files, setFiles] = useState()
+    const [files, setFiles] = useState([])
+    let filesTemp = files
     const uploadFile = file => {
-        console.log(file)
+        if (files.includes(file)) {
+            goosemodScope.createToast(
+                "can't upload same file twice",
+                { type: "warning" }
+            )
+            return
+        }
+        //gross but needed bc of race
+        filesTemp = [...filesTemp, file]
+        setFiles(filesTemp)
     }
+    
+
+    const filesList = files.map(file => <File 
+        name={file.name}
+        path={file.path}
+        size={file.size}
+    />)
 
     return <div className="FileUpload" >
         <input
@@ -23,8 +40,8 @@ const FileUpload = props => {
             id="fileUploadInput"
             multiple="true"
             onChange={e => {
-                let files = [...e.target.files]
-                if (files && files.length > 0) files.forEach(
+                let fileArray = [...e.target.files]
+                if (fileArray && fileArray.length > 0) fileArray.forEach(
                     file => uploadFile(file)
                 )
             }}
@@ -36,7 +53,7 @@ const FileUpload = props => {
         <DropZone
             upload={uploadFile}
         >
-            <File />
+            {filesList}
         </DropZone>
     </div>
 }
