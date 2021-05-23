@@ -2,17 +2,21 @@ const { React } = goosemodScope.webpackModules.common
 const { useState, useRef, useEffect } = React
 
 const DropZone = props => {
-    const [dragging, setDragging] = useState(false)
+    const [dragging, setDragging] = useState(0)
     const divRef = useRef()
 
     const evOn = ["dragenter", "dragover"],
         evOff = ["dragleave", "drop"]
 
     //functions need to be defined in consts, because we need stable ref to destory them
-    const drOn = () => setDragging(true)
-    const drOff = () => setDragging(false)
+    const drOn = () => setDragging(1)
+    const drOff = () => setDragging(0)
     const drop = e => {
         console.log("drop!")
+        let files = [...e.dataTransfer.files]
+        if (files && files.length > 0) {
+            console.log("file!")
+        }
     }
 
     //prevent default events, so drag and drop works as intended
@@ -50,18 +54,8 @@ const DropZone = props => {
     )
 
     return <div
-        ref={divRef}
-        className={dragging ? "fileDragZone dragging" : "fileDragZone"}
-        onDragEnter={drOn}
-        onDragOver={drOn}
-        onDragLeave={drOff}
-        onDrop={e => {
-            console.log("drop")
-            let files = [...e.dataTransfer.files]
-            if (files && files.length > 0) {
-                console.log("file!")
-            }
-        }}
+        ref={divRef} dragging={dragging}
+        className={"fileDragZone"}
     >
     </div>
 }

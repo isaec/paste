@@ -48,9 +48,10 @@ label.fileUploadLabel:hover {
 
 div.fileDragZone {
     background-color: hsl(218, 8%, 26%);
+    transition: background-color .25s cubic-bezier(.71,.21,.36,.71);
 }
 
-div.fileDragZone.dragging {
+div.fileDragZone[dragging="1"] {
     background-color: hsl(218, 8%, 28%);
 }
 
