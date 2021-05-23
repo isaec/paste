@@ -28,7 +28,7 @@ input[type="file"].fileUploadInput {
     z-index: -1;
 }
 
-div.fileDragInfo, label.fileUploadLabel {
+div.fileDragInfo, label.fileUploadLabel, div.fileText {
     font-family: var(--font-primary);
     font-size: 100%;
     padding: 12px;
@@ -51,7 +51,7 @@ label.fileUploadLabel:hover {
 
 div.fileDragZone {
     background-color: hsl(218, 8%, 26%);
-    transition: background-color .25s cubic-bezier(.71,.21,.36,.71);
+    transition: background-color .25s cubic-bezier(.71, .21, .36, .71);
     display: grid;
     gap: 12px;
     grid-auto-flow: row dense;
@@ -82,16 +82,19 @@ div.fileDragZone[dragging="1"] {
 }
 
 div.fileDragZone[fileDrop="1"] {
-    animation: upload 1s cubic-bezier(.52,.14,.5,1.03);
+    animation: upload 1s cubic-bezier(.52, .14, .5, 1.03);
 }
 
 input[type="file"].fileUploadInput:focus+label.fileUploadLabel {
     border-color: var(--focus-primary);
 }
 
+div.File, label.fileUploadLabel, div.fileDragZone {
+    border-radius: 3px;
+}
+
 div.File {
-    background-color: red;
+    background-color: hsl(218, 8%, 30%);
     margin: 12px;
     padding: 12px;
-    border-radius: 3px;
 }
