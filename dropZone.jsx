@@ -12,9 +12,7 @@ const DropZone = props => {
     //functions need to be defined in consts, because we need stable ref to destroy them
     const [dragging, drOn, drOff] = useToggle()
     const drop = e => {
-        console.log("drop!")
         let files = [...e.dataTransfer.files]
-        console.log(files)
         if (!files || files.length < 1) {
             goosemodScope.showToast(
                 "no files were included in that drop - ensure discord is focused",
@@ -25,8 +23,8 @@ const DropZone = props => {
             )
             return
         }
-        console.log("file!")
         fileAnim()
+        files.forEach(file => props.upload(file))
     }
 
     //prevent default events, so drag and drop works as intended
