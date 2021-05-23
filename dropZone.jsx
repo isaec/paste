@@ -14,8 +14,10 @@ const DropZone = props => {
     const drop = e => {
         console.log("drop!")
         let files = [...e.dataTransfer.files]
+        console.log(files)
         if (files && files.length > 0) {
             console.log("file!")
+            fileAnim()
         }
     }
 

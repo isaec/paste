@@ -55,6 +55,22 @@ div.fileDragZone[dragging="1"] {
     background-color: hsl(218, 8%, 28%);
 }
 
+@keyframes upload {
+    0% {
+        background-color: hsl(218, 8%, 28%);
+    }
+    25% {
+        background-color: hsl(212, 56%, 42%);
+    }
+    100% {
+        background-color: hsl(218, 8%, 26%);
+    }
+}
+
+div.fileDragZone[fileDrop="1"] {
+    animation: upload 1s cubic-bezier(.52,.14,.5,1.03);
+}
+
 input[type="file"].fileUploadInput:focus+label.fileUploadLabel {
     border-color: var(--focus-primary);
 }
