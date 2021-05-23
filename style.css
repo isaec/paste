@@ -126,7 +126,7 @@ img.fileIcon {
     width: 60px;
     padding-bottom: 8px;
 
-    margin: auto;
+    /* margin: auto; */
     
     object-fit: scale-down;
 }

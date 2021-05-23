@@ -43,7 +43,7 @@ const File = React.memo(props => <div
     <div className="fileText"
     >{props.size} bytes</div>
     <div className="fileText"
-    >{props.type || "???/???"}</div>
+    >{props.type || "unknown"}</div>
     <div className="fileText wide padtop"
     >{props.path}</div>
     <div className="fileText wide"

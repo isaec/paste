@@ -14,16 +14,18 @@ const FileUpload = props => {
     const [files, setFiles] = useState([])
     let filesTemp = files
     const uploadFile = file => {
-        if (files.includes(file)) {
-            goosemodScope.createToast(
-                "can't upload same file twice",
-                { type: "warning" }
+        if (filesTemp.some(compFile => compFile.path === file.path)) {
+            goosemodScope.showToast(
+                "can't upload same filepath twice",
+                {
+                    type: "warning",
+                    timeout: 3700
+                }
             )
             return
         }
         //gross but needed bc of race
-        filesTemp = [...filesTemp, file]
-        setFiles(filesTemp)
+        setFiles(filesTemp = [...filesTemp, file])
     }
 
 
