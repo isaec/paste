@@ -1,7 +1,7 @@
 const { React } = goosemodScope.webpackModules.common
 const { useState, useRef, useEffect } = React
 
-const File = props => <div
+const File = React.memo(props => <div
     className="File">
     <div
         className="fileText"
@@ -11,11 +11,11 @@ const File = props => <div
     >{props.url || "~"}</div>
     <div
         className="fileText"
-    >{props.location}</div>
+    >{props.path}</div>
     <div
         className="fileText"
     >{props.size}</div>
-</div>
+</div>)
 
 
 export default File

@@ -1,6 +1,6 @@
 const { React } = goosemodScope.webpackModules.common,
     { findByDisplayName, findByProps } = goosemodScope.webpackModules
-const { useState, useRef } = React
+const { useState, useMemo } = React
 import DropZone from "./dropZone"
 import File from "./file"
 
@@ -25,13 +25,15 @@ const FileUpload = props => {
         filesTemp = [...filesTemp, file]
         setFiles(filesTemp)
     }
-    
 
-    const filesList = files.map(file => <File 
+
+    const filesList = useMemo(() => files.map(file => <File
         name={file.name}
         path={file.path}
         size={file.size}
-    />)
+    />),
+        [files]
+    )
 
     return <div className="FileUpload" >
         <input
