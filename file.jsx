@@ -5,7 +5,7 @@ const { useState, useRef, useEffect } = React
 
 const File = React.memo(props => <div
     className="File">
-    <div className="fileIcon"/>
+    <div className="fileIcon" />
     <div
         className="fileText"
     >{props.name}</div>
@@ -14,10 +14,10 @@ const File = React.memo(props => <div
     >{props.url || "~"}</div>
     <div
         className="fileText"
-    >{props.path}</div>
-    <div
-        className="fileText"
     >{props.size}</div>
+    <div
+        className="fileText wide"
+    >{props.path}</div>
 </div>)
 
 
