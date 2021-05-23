@@ -23,6 +23,12 @@ const getUrl = type => {
         case "video/mp4":
             //play arrow, film reel
             return "https://discord.com/assets/81d1e0f3ad7aa06b1a82da2492cf8699.svg"
+        case "audio/mpeg":
+        case "audio/wav":
+        case "application/x-audacity-project":
+        case "audio/basic":
+            //speaker icon
+            return "https://discord.com/assets/7674eb0d869afebca7b1f3a5202506c6.svg"
         default:
             //blank file
             return "https://discord.com/assets/66084381f55f4238d69e5cbe3b8dc42e.svg"

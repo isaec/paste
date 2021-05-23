@@ -107,6 +107,9 @@ div.fileText {
     padding: 3px 6px;
     margin-top: auto;
     margin-bottom: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 div.fileText.wide {
