@@ -56,7 +56,7 @@ div.fileDragZone {
     gap: 12px;
     grid-auto-flow: row dense;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    grid-template-rows: repeat(auto-fit, minmax(175px, 1fr));
+    grid-template-rows: repeat(auto-fit, 185px);
 }
 
 div.fileDragInfo {
@@ -98,7 +98,7 @@ div.File {
     margin: 12px;
     padding: 12px;
     display: grid;
-    grid-template-columns: 72px 3fr;
+    grid-template-columns: 60px 1fr;
     grid-template-rows: repeat(4, 1fr);
     column-gap: 8px;
 }
@@ -116,9 +116,17 @@ div.fileText.wide {
     grid-column: 1 / 3;
 }
 
+div.fileText.padtop {
+    padding-top: 9px;
+}
+
 img.fileIcon {
     color: var(--header-primary);
     grid-row: 1 / 4;
+    width: 60px;
+    padding-bottom: 8px;
+
+    margin: auto;
     
     object-fit: scale-down;
 }
