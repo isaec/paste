@@ -67,7 +67,10 @@ const DropZone = props => {
         fileDrop={fileDrop}
         onAnimationEnd={animEnd}
         className="fileDragZone"
-    >{props.children}
+    >
+        {props.children}
+        <div className="fileDragInfo"
+        >drag files here to upload</div>
     </div>
 }
 

@@ -28,14 +28,17 @@ input[type="file"].fileUploadInput {
     z-index: -1;
 }
 
-label.fileUploadLabel {
-    pointer-events: all;
-    cursor: pointer;
+div.fileDragInfo, label.fileUploadLabel {
     font-family: var(--font-primary);
     font-size: 100%;
     padding: 12px;
     font-weight: 500;
     color: var(--text-normal);
+}
+
+label.fileUploadLabel {
+    pointer-events: all;
+    cursor: pointer;
     background-color: hsl(218, 8%, 26%);
     border: 3px solid hsl(218, 8%, 26%);
     text-align: center;
@@ -50,8 +53,15 @@ div.fileDragZone {
     background-color: hsl(218, 8%, 26%);
     transition: background-color .25s cubic-bezier(.71,.21,.36,.71);
     display: grid;
-    row-gap: 12px;
-    column-gap: 12px;
+    gap: 12px;
+    grid-auto-flow: row dense;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(75px, 1fr));
+}
+
+div.fileDragInfo {
+    font-size: 150%;
+    margin: auto;
 }
 
 div.fileDragZone[dragging="1"] {
