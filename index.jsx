@@ -25,7 +25,8 @@ const addCss = name => {
 }
 
 const makeUploadWindow = srcProps => {
-    (0, findByProps("openModal").openModal)((model) => {
+    (0, findByProps("openModal").openModal)((modal) => {
+        if(modal.transitionState === 3) drag.set(true)
         return <ConfirmModal
             //specific to try to prevent collision
             className="uploadModalBigGoose"
@@ -35,21 +36,23 @@ const makeUploadWindow = srcProps => {
             cancelText={findByProps("Messages").Messages.CANCEL}
             onClose={() => { // General close (?)
                 console.log("closed")
+                drag.set(true)
             }}
             onCancel={() => { // Cancel text
                 console.log("canceled")
-                model.onClose();
+                modal.onClose()
+                drag.set(true)
             }}
             onConfirm={() => { // Confirm button
                 console.log("do it")
-                model.onClose();
+                modal.onClose()
+                drag.set(true)
             }}
-            transitionState={model.transitionState}
+            transitionState={modal.transitionState}
         >
-            <FileUpload
-            />
+            <FileUpload />
         </ConfirmModal>
-    });
+    })
 }
 
 export default {
@@ -70,8 +73,6 @@ export default {
         },
         onLoadingFinished: () => {
             //
-            drag.set(false)
-            drag.set(true)
         },
         onRemove: () => {
             removeN()
