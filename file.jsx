@@ -39,16 +39,16 @@ const k = 1024,
     //if an error happens bc file is larger then YB ill eat my hat
     sizes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
 
-//modified to reduce allocation, casting, and use B instead of Bytes
+//modified to reduce allocation, and use B instead of Bytes
 //https://stackoverflow.com/questions/15900485/correct-way-to-convert-size-in-bytes-to-kb-mb-gb-in-javascript/18650828#18650828
 const formatBytes = bytes => {
     if (bytes === 0) return '0 B';
 
     const i = Math.floor(Math.log(bytes) / Math.log(k));
 
-    return `${(bytes / Math.pow(k, i)).toFixed(
+    return `${parseFloat((bytes / Math.pow(k, i)).toFixed(
         3 //decimal places
-    )} ${sizes[i]}`
+    ))} ${sizes[i]}`
 }
 
 const File = React.memo(props => <div
