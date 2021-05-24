@@ -39,19 +39,19 @@ div.fileDragInfo, label.fileUploadLabel, div.fileText {
 label.fileUploadLabel {
     pointer-events: all;
     cursor: pointer;
-    background-color: hsl(218, 8%, 26%);
-    border: 3px solid hsl(218, 8%, 26%);
+    background-color: var(--brand-color);
+    border: 3px solid var(--brand-color);
     text-align: center;
     transition: background-color .25s cubic-bezier(.44, .1, .24, 1.04), border-color .3s cubic-bezier(.41, .05, .74, .98);
 }
 
 label.fileUploadLabel:hover {
-    background-color: hsl(218, 8%, 28%);
+    background-color: var(--brand-color-hover);
 }
 
 div.fileDragZone {
-    background-color: hsl(218, 8%, 26%);
-    transition: background-color .25s cubic-bezier(.71, .21, .36, .71);
+    background-color: var(--background-secondary);
+    transition: background-color .5s cubic-bezier(.71, .21, .36, .71);
     display: grid;
     gap: 12px;
     grid-auto-flow: row dense;
@@ -66,18 +66,18 @@ div.fileDragInfo {
 }
 
 div.fileDragZone[dragging="1"] {
-    background-color: hsl(218, 8%, 28%);
+    background-color: var(--background-accent);
 }
 
 @keyframes upload {
     0% {
-        background-color: hsl(218, 8%, 28%);
+        background-color: var(--background-accent);
     }
     25% {
-        background-color: hsl(212, 56%, 42%);
+        background-color: var(--brand-color-hover);
     }
     100% {
-        background-color: hsl(218, 8%, 26%);
+        background-color: var(--background-secondary);
     }
 }
 
@@ -94,7 +94,7 @@ div.File, label.fileUploadLabel, div.fileDragZone {
 }
 
 div.File {
-    background-color: hsl(218, 8%, 30%);
+    background-color: var(--background-primary);
     margin: 12px;
     padding: 12px;
     display: grid;
