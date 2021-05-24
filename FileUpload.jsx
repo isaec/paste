@@ -54,7 +54,7 @@ const FileUpload = props => {
         <label
             className="fileUploadLabel"
             for="fileUploadInput"
-        >click to upload files</label>
+        >Click to Upload Files</label>
         <DropZone
             upload={uploadFile}
         >

@@ -30,7 +30,7 @@ const makeUploadWindow = srcProps => {
         return <ConfirmModal
             //specific to try to prevent collision
             className="uploadModalBigGoose"
-            header="upload"
+            header="Upload"
             confirmText="Send Links"
             confirmButtonColor={ButtonColors["colorBrand"]}
             cancelText={findByProps("Messages").Messages.CANCEL}
@@ -59,7 +59,7 @@ export default {
     goosemodHandlers: {
         onImport: () => {
             textUnpatch = channelTextAreaButtons.patch(
-                "upload",
+                "Upload files to filehosts and send the urls",
                 "https://avatars.githubusercontent.com/u/19228318?s=48&v=4",
                 () => {
                     drag.set(false)

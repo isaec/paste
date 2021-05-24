@@ -70,7 +70,7 @@ const DropZone = props => {
     >
         {props.children}
         <div className="fileDragInfo"
-        >drag files here to upload</div>
+        >{dragging === 0 ? "Drag Files Here to Upload" : "Let Go to Upload"}</div>
     </div>
 }
 
